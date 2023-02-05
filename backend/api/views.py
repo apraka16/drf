@@ -1,20 +1,18 @@
 import json
-from django.http import JsonResponse
+from django.forms.models import model_to_dict
+# from django.http import JsonResponse, HttpResponse
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+from products.models import Product
+from products.serializers import ProductSerializer
 
 # Create your views here.
+@api_view(['GET', 'POST'])
 def api_home(request):
-    # print(request.GET)
-    
-    body  = request.body
-    # print(request.GET)
+    """Get model data in a certain order"""
+    instance = Product.objects.all().order_by("?").first()
     data = {}
-    try:
-        data = json.loads(body)
-    except:
-        pass
-    print(data)
-    data['params'] = dict(request.GET)
-    data['headers'] = dict(request.headers)
-    data['content-type'] = request.content_type
-
-    return JsonResponse(data)
+    if instance:
+        data = ProductSerializer(instance).data
+    return Response(data) 
