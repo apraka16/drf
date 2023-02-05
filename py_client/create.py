@@ -1,13 +1,12 @@
 import requests
 
-"""A public API endpoint to play with"""
-# endpoint = 'https://httpbin.org/anything'
 
 endpoint = 'http://localhost:8000/api/products/'
 
 data = {
-    "title": "This field is done",
-    "price": 32.99
+    "title": "New Product",
+    "content": "Not expensive",
+    "price": 22.11
 }
 
 # Client is requesting the endpoint for data
