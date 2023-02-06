@@ -5,7 +5,7 @@ endpoint = 'http://localhost:8000/api/products/'
 
 data = {
     "title": "New Product",
-    "content": "Not expensive",
+    # "content": "Not expensive",
     "price": 22.11
 }
 
